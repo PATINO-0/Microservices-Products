@@ -1,13 +1,13 @@
-package com.ejemplo.productos.domain.entities;
+package com.poo.productos.infrastructure.entities;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "products")
+@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+    @Column(name = "productId")
     private Long productId;
 
     @Column(name = "name", nullable = false)
@@ -19,7 +19,7 @@ public class Product {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "category_id", nullable = false)
+    @Column(name = "categoryId", nullable = false)
     private Long categoryId;
 
     // Constructor vacío
@@ -35,7 +35,6 @@ public class Product {
         this.categoryId = categoryId;
     }
 
-    // Getters y Setters
     public Long getProductId() {
         return productId;
     }
@@ -75,4 +74,7 @@ public class Product {
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
+
 }
+
+
