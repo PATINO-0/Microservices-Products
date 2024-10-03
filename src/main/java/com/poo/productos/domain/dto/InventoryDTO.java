@@ -1,6 +1,7 @@
-package com.ejemplo.productos.domain.dto;
+package com.poo.productos.domain.dto;
 
 public class InventoryDTO {
+    private long inventoryId;
     private Long productId;
     private Integer quantity;
     private String location;
@@ -10,13 +11,21 @@ public class InventoryDTO {
     }
 
     // Constructor con parámetros
-    public InventoryDTO(Long productId, Integer quantity, String location) {
+    public InventoryDTO(Long inventoryId, Long productId, Integer quantity, String location) {
         this.productId = productId;
         this.quantity = quantity;
         this.location = location;
+        this.inventoryId = inventoryId;
     }
 
-    // Getters y Setters
+    public long getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(long inventoryId) {
+        this.inventoryId = inventoryId;
+    }
+
     public Long getProductId() {
         return productId;
     }
@@ -40,4 +49,5 @@ public class InventoryDTO {
     public void setLocation(String location) {
         this.location = location;
     }
+
 }

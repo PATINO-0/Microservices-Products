@@ -1,4 +1,4 @@
-package com.ejemplo.productos.domain.dto;
+package com.poo.productos.domain.dto;
 
 public class ProductDTO {
     private Long productId;
@@ -20,7 +20,6 @@ public class ProductDTO {
         this.categoryId = categoryId;
     }
 
-    // Getters y Setters
     public Long getProductId() {
         return productId;
     }
@@ -60,4 +59,6 @@ public class ProductDTO {
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
+
+   
 }
