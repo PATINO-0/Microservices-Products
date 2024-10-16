@@ -1,6 +1,13 @@
 package com.poo.productos.infrastructure.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "inventory")
@@ -10,26 +17,28 @@ public class Inventory {
     @Column(name = "inventoryId")
     private Long inventoryId;
 
-    @Column(name = "productId", nullable = false)
-    private Long productId;
+    // Relación muchos a uno con Product
+    @ManyToOne
+    @JoinColumn(name = "productId", nullable = false)
+    private Product product;
+
 
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
     @Column(name = "location", nullable = false)
-    private Integer location;
+    private String location;
 
     // Constructor vacío
     public Inventory() {
     }
 
     // Constructor con parámetros
-    public Inventory(Long inventoryId, Long productId, Integer quantity, Integer location) {
+    public Inventory(Long inventoryId, Product product, Integer quantity, String location) {
         this.inventoryId = inventoryId;
-        this.productId = productId;
+        this.product = product;
         this.quantity = quantity;
         this.location = location;
-
     }
 
     public Long getInventoryId() {
@@ -40,12 +49,12 @@ public class Inventory {
         this.inventoryId = inventoryId;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Integer getQuantity() {
@@ -56,15 +65,11 @@ public class Inventory {
         this.quantity = quantity;
     }
 
-    public Integer getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Integer location) {
+    public void setLocation(String location) {
         this.location = location;
     }
-
-    
-
-  
 }

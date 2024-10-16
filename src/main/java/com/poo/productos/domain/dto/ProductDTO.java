@@ -1,23 +1,24 @@
 package com.poo.productos.domain.dto;
 
+import java.util.List;
+
 public class ProductDTO {
     private Long productId;
     private String name;
     private String description;
     private Double price;
-    private Long categoryId;
+    private CategoryDTO category;
+    private List<InventoryDTO> inventories;  // Corregido: usar lista de InventoryDTO
 
-    // Constructor vacío
-    public ProductDTO() {
-    }
+    public ProductDTO() {}
 
-    // Constructor con parámetros
-    public ProductDTO(Long productId, String name, String description, Double price, Long categoryId) {
+    public ProductDTO(Long productId, String name, Double price, CategoryDTO category, String description, List<InventoryDTO> inventories) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.categoryId = categoryId;
+        this.category = category;
+        this.inventories = inventories;
     }
 
     public Long getProductId() {
@@ -52,13 +53,19 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public CategoryDTO getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
     }
 
-   
+    public List<InventoryDTO> getInventories() {
+        return inventories;
+    }
+
+    public void setInventories(List<InventoryDTO> inventories) {
+        this.inventories = inventories;
+    }
 }
