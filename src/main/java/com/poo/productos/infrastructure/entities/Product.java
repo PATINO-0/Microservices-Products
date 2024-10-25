@@ -1,6 +1,7 @@
 package com.poo.productos.infrastructure.entities;
 
 import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,13 +41,13 @@ public class Product {
 
     public Product() {}
 
-    public Product(Long productId, String name, String description, Double price, Category category, List<Inventory> inventories) {
+    public Product(Long productId, String name, String description, Double price, Category category) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
-        this.inventories = inventories;
+       
     }
 
     public Long getProductId() {
@@ -89,11 +90,5 @@ public class Product {
         this.category = category;
     }
 
-    public List<Inventory> getInventories() {
-        return inventories;
-    }
-
-    public void setInventories(List<Inventory> inventories) {
-        this.inventories = inventories;
-    }
+   
 }

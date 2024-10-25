@@ -2,22 +2,20 @@ package com.poo.productos.domain.dto;
 
 public class InventoryDTO {
     private Long inventoryId;
-    private Long productId; // Llave foránea a Product
+    private Long productId; 
     private Integer quantity;
     private String location;
-    private Integer stock;
     
 
     // Constructor vacío
     public InventoryDTO() {}
 
     // Constructor con parámetros
-    public InventoryDTO(Long inventoryId, Long productId, Integer quantity, String location, Integer stock) {
+    public InventoryDTO(Long inventoryId, Long productId, Integer quantity, String location) {
         this.inventoryId = inventoryId;
         this.productId = productId;
         this.quantity = quantity;
         this.location = location;
-        this.stock = stock;
         
     }
     
@@ -52,14 +50,6 @@ public class InventoryDTO {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
     }
 
 }

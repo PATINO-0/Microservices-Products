@@ -1,24 +1,22 @@
 package com.poo.productos.domain.dto;
 
-import java.util.List;
-
 public class ProductDTO {
     private Long productId;
     private String name;
     private String description;
     private Double price;
     private CategoryDTO category;
-    private List<InventoryDTO> inventories;  // Corregido: usar lista de InventoryDTO
+     // Corregido: usar lista de InventoryDTO
 
     public ProductDTO() {}
 
-    public ProductDTO(Long productId, String name, Double price, CategoryDTO category, String description, List<InventoryDTO> inventories) {
+    public ProductDTO(Long productId, String name, Double price, CategoryDTO category, String description) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
-        this.inventories = inventories;
+       
     }
 
     public Long getProductId() {
@@ -61,11 +59,5 @@ public class ProductDTO {
         this.category = category;
     }
 
-    public List<InventoryDTO> getInventories() {
-        return inventories;
-    }
-
-    public void setInventories(List<InventoryDTO> inventories) {
-        this.inventories = inventories;
-    }
+  
 }

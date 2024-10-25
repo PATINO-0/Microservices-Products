@@ -10,14 +10,14 @@ import org.mapstruct.Mappings;
 import com.poo.productos.domain.dto.CategoryDTO;
 import com.poo.productos.infrastructure.entities.Category;
 
-@Mapper(componentModel = "spring", uses = {ProductMapper.class}) // Usar ProductMapper
+@Mapper(componentModel = "spring")
 public interface CategoryMapper {
 
     @Mappings({
         @Mapping(source = "categoryId", target = "categoryId"),
         @Mapping(source = "name", target = "name"),
-        @Mapping(source = "description", target = "description"),
-        @Mapping(source = "products", target = "products")  // Mapeo de productos
+        @Mapping(source = "description", target = "description")
+        // Eliminamos el mapeo de productos para evitar la dependencia circular
     })
     CategoryDTO toCategoryDTO(Category category);
 
