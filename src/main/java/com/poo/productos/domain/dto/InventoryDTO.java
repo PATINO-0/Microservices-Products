@@ -1,28 +1,30 @@
 package com.poo.productos.domain.dto;
 
 public class InventoryDTO {
-    private long inventoryId;
-    private Long productId;
+    private Long inventoryId;
+    private Long productId; 
     private Integer quantity;
     private String location;
+    
 
     // Constructor vacío
-    public InventoryDTO() {
-    }
+    public InventoryDTO() {}
 
     // Constructor con parámetros
     public InventoryDTO(Long inventoryId, Long productId, Integer quantity, String location) {
+        this.inventoryId = inventoryId;
         this.productId = productId;
         this.quantity = quantity;
         this.location = location;
-        this.inventoryId = inventoryId;
+        
     }
+    
 
-    public long getInventoryId() {
+    public Long getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(long inventoryId) {
+    public void setInventoryId(Long inventoryId) {
         this.inventoryId = inventoryId;
     }
 

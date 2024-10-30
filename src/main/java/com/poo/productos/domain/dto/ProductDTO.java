@@ -5,19 +5,18 @@ public class ProductDTO {
     private String name;
     private String description;
     private Double price;
-    private Long categoryId;
+    private CategoryDTO category;
+     // Corregido: usar lista de InventoryDTO
 
-    // Constructor vacío
-    public ProductDTO() {
-    }
+    public ProductDTO() {}
 
-    // Constructor con parámetros
-    public ProductDTO(Long productId, String name, String description, Double price, Long categoryId) {
+    public ProductDTO(Long productId, String name, Double price, CategoryDTO category, String description) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.categoryId = categoryId;
+        this.category = category;
+       
     }
 
     public Long getProductId() {
@@ -52,13 +51,13 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public CategoryDTO getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
     }
 
-   
+  
 }
