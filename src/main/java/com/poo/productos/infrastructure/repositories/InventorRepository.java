@@ -10,7 +10,9 @@ import com.poo.productos.infrastructure.mapper.InventoryMapper;
 import com.poo.productos.domain.Repositories.InventoryRepository;
 import com.poo.productos.domain.dto.InventoryDTO;
 import com.poo.productos.infrastructure.entities.Inventory;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class InventorRepository implements InventoryRepository {
     
 

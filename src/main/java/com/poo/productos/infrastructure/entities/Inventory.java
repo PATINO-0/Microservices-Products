@@ -14,12 +14,12 @@ import jakarta.persistence.Table;
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "inventoryId")
+    @Column(name = "inventory_id")
     private Long inventoryId;
 
     // Relación muchos a uno con Product
     @ManyToOne
-    @JoinColumn(name = "productId", nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
 

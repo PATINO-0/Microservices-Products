@@ -1,5 +1,6 @@
-package com.poo.productos.domain.controllers;
+package com.poo.productos.domain.Controllers;
 
+import com.poo.productos.domain.dto.InventoryDTO;
 import com.poo.productos.infrastructure.entities.Inventory;
 import com.poo.productos.domain.Services.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,24 +18,24 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @GetMapping
-    public List<Inventory> getAllInventories() {
+    public List<InventoryDTO> getAllInventories() {
         return inventoryService.getAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Inventory> getInventoryById(@PathVariable("id") Integer id) {
+    public ResponseEntity<InventoryDTO> getInventoryById(@PathVariable("id") Integer id) {
         return inventoryService.getById(id)
                 .map(inventory -> new ResponseEntity<>(inventory, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
+/*
     @PostMapping
-    public ResponseEntity<Inventory> createInventory(@RequestBody Inventory inventory) {
+    public ResponseEntity<Inventory> createInventory(@RequestBody InventoryDTO inventory) {
         return new ResponseEntity<>(inventoryService.save(inventory), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Inventory> updateInventory(@PathVariable("id") Integer id, @RequestBody Inventory inventory) {
+    public ResponseEntity<InventoryDTO> updateInventory(@PathVariable("id") Integer id, @RequestBody InventoryDTO inventory) {
         return inventoryService.update(id, inventory)
                 .map(updatedInventory -> new ResponseEntity<>(updatedInventory, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -47,5 +48,5 @@ public class InventoryController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
+    }*/
 }

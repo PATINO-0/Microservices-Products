@@ -1,4 +1,6 @@
 package com.poo.productos.domain.Services;
+import com.poo.productos.domain.Repositories.InventoryRepository;
+import com.poo.productos.domain.dto.InventoryDTO;
 import com.poo.productos.infrastructure.crud.InventoryCrud;
 import com.poo.productos.infrastructure.entities.Inventory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,22 +11,23 @@ import java.util.Optional;
 
 @Service
 public class InventoryService {
+
     @Autowired
-    private InventoryCrud inventoryCrud;
+    private InventoryRepository repo;
 
-    public List<Inventory> getAll() {
-        return (List<Inventory>) inventoryCrud.findAll();
+    public List<InventoryDTO> getAll() {
+        return repo.getAll();
     }
 
-    public Optional<Inventory> getById(Integer id) {
-        return inventoryCrud.findById(id);
+    public Optional<InventoryDTO> getById(Integer id) {
+        return repo.getById(id);
     }
 
-    public Inventory save(Inventory inventory) {
-        return inventoryCrud.save(inventory);
+    public InventoryDTO save(InventoryDTO inventoryDTO) {
+        return repo.save(inventoryDTO);
     }
 
-    public Optional<Inventory> update(Integer id, Inventory inventory) {
+   /* public Optional<InventoryDTO> update(Integer id, InventoryDTO inventory) {
         return inventoryCrud.findById(id).map(existingInventory -> {
             existingInventory.setProduct(inventory.getProduct());
             existingInventory.setQuantity(inventory.getQuantity());
@@ -39,4 +42,6 @@ public class InventoryService {
         }
         return false;
     }
+
+    */
 }
