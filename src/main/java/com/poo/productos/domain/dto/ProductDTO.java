@@ -1,25 +1,14 @@
 package com.poo.productos.domain.dto;
 
-import java.util.List;
-
 public class ProductDTO {
     private Long productId;
     private String name;
     private String description;
     private Double price;
-    private CategoryDTO category;
-    private List<InventoryDTO> inventories;  // Corregido: usar lista de InventoryDTO
+    private Long categoryId;
+    private Long inventoryId;
 
-    public ProductDTO() {}
-
-    public ProductDTO(Long productId, String name, Double price, CategoryDTO category, String description, List<InventoryDTO> inventories) {
-        this.productId = productId;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.category = category;
-        this.inventories = inventories;
-    }
+    // Getters y Setters
 
     public Long getProductId() {
         return productId;
@@ -53,19 +42,19 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public CategoryDTO getCategory() {
-        return category;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(CategoryDTO category) {
-        this.category = category;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public List<InventoryDTO> getInventories() {
-        return inventories;
+    public Long getInventoryId() {
+        return inventoryId;
     }
 
-    public void setInventories(List<InventoryDTO> inventories) {
-        this.inventories = inventories;
+    public void setInventoryId(Long inventoryId) {
+        this.inventoryId = inventoryId;
     }
 }

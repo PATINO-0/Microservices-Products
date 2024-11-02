@@ -6,18 +6,9 @@ public class CategoryDTO {
     private Long categoryId;
     private String name;
     private String description;
-    private List<ProductDTO> products;  // Lista de productos
+    private List<ProductDTO> products;
 
-    // Constructor vacío
-    public CategoryDTO() {}
-
-    // Constructor con parámetros
-    public CategoryDTO(Long categoryId, String name, String description, List<ProductDTO> products) {
-        this.categoryId = categoryId;
-        this.name = name;
-        this.description = description;
-        this.products = products; // Inicialización de productos
-    }
+    // Getters y Setters
 
     public Long getCategoryId() {
         return categoryId;

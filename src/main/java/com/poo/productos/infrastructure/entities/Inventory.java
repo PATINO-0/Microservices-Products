@@ -1,46 +1,27 @@
 package com.poo.productos.infrastructure.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "inventory")
 public class Inventory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "inventoryId")
+    @Column(name = "inventory_id")
     private Long inventoryId;
-
-    // Relación muchos a uno con Product
-    @ManyToOne
-    @JoinColumn(name = "productId", nullable = false)
-    private Product product;
-
-
-    @Column(name = "quantity", nullable = false)
-    private Integer quantity;
 
     @Column(name = "location", nullable = false)
     private String location;
 
-    // Constructor vacío
-    public Inventory() {
-    }
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
 
-    // Constructor con parámetros
-    public Inventory(Long inventoryId, Product product, Integer quantity, String location) {
-        this.inventoryId = inventoryId;
-        this.product = product;
-        this.quantity = quantity;
-        this.location = location;
-    }
+    @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Product> products;
 
+    // Getters y Setters
     public Long getInventoryId() {
         return inventoryId;
     }
@@ -49,12 +30,12 @@ public class Inventory {
         this.inventoryId = inventoryId;
     }
 
-    public Product getProduct() {
-        return product;
+    public String getLocation() {
+        return location;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public Integer getQuantity() {
@@ -65,11 +46,11 @@ public class Inventory {
         this.quantity = quantity;
     }
 
-    public String getLocation() {
-        return location;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

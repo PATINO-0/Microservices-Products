@@ -1,23 +1,14 @@
 package com.poo.productos.infrastructure.entities;
 
-import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "product")
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productId")
+    @Column(name = "product_id")
     private Long productId;
 
     @Column(name = "name", nullable = false)
@@ -29,26 +20,15 @@ public class Product {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    // Relación muchos a uno con Category
-    @ManyToOne
-    @JoinColumn(name = "categoryId", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
-    
-// Relación uno a muchos con Inventory
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Inventory> inventories;  
 
-    public Product() {}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "inventory_id", nullable = false)
+    private Inventory inventory;
 
-    public Product(Long productId, String name, String description, Double price, Category category, List<Inventory> inventories) {
-        this.productId = productId;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.category = category;
-        this.inventories = inventories;
-    }
-
+    // Getters y Setters
     public Long getProductId() {
         return productId;
     }
@@ -89,11 +69,11 @@ public class Product {
         this.category = category;
     }
 
-    public List<Inventory> getInventories() {
-        return inventories;
+    public Inventory getInventory() {
+        return inventory;
     }
 
-    public void setInventories(List<Inventory> inventories) {
-        this.inventories = inventories;
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
 }

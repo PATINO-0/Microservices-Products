@@ -6,9 +6,10 @@ import java.util.List;
 @Entity
 @Table(name = "categories")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "categoryId")
+    @Column(name = "category_id")
     private Long categoryId;
 
     @Column(name = "name", nullable = false, unique = true)
@@ -17,21 +18,10 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    // Relación uno a muchos con Product
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Product> products;
 
-    // Constructor vacío
-    public Category() {
-    }
-
-    // Constructor con parámetros
-    public Category(Long categoryId, String name, String description) {
-        this.categoryId = categoryId;
-        this.name = name;
-        this.description = description;
-    }
-
+    // Getters y Setters
     public Long getCategoryId() {
         return categoryId;
     }

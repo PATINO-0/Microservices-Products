@@ -1,26 +1,14 @@
 package com.poo.productos.domain.dto;
 
+import java.util.List;
+
 public class InventoryDTO {
     private Long inventoryId;
-    private Long productId; // Llave foránea a Product
-    private Integer quantity;
     private String location;
-    private Integer stock;
-    
+    private Integer quantity;
+    private List<ProductDTO> products;
 
-    // Constructor vacío
-    public InventoryDTO() {}
-
-    // Constructor con parámetros
-    public InventoryDTO(Long inventoryId, Long productId, Integer quantity, String location, Integer stock) {
-        this.inventoryId = inventoryId;
-        this.productId = productId;
-        this.quantity = quantity;
-        this.location = location;
-        this.stock = stock;
-        
-    }
-    
+    // Getters y Setters
 
     public Long getInventoryId() {
         return inventoryId;
@@ -28,22 +16,6 @@ public class InventoryDTO {
 
     public void setInventoryId(Long inventoryId) {
         this.inventoryId = inventoryId;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public String getLocation() {
@@ -54,12 +26,19 @@ public class InventoryDTO {
         this.location = location;
     }
 
-    public Integer getStock() {
-        return stock;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
+    public List<ProductDTO> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductDTO> products) {
+        this.products = products;
+    }
 }

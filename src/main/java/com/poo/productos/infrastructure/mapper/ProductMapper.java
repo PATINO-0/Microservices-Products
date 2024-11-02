@@ -1,30 +1,21 @@
 package com.poo.productos.infrastructure.mapper;
 
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import java.util.List;
 import com.poo.productos.domain.dto.ProductDTO;
 import com.poo.productos.infrastructure.entities.Product;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {CategoryMapper.class, InventoryMapper.class})
+@Mapper(componentModel = "spring")
 public interface ProductMapper {
 
-    @Mappings({
-        @Mapping(source = "productId", target = "productId"),
-        @Mapping(source = "name", target = "name"),
-        @Mapping(source = "price", target = "price"),
-        @Mapping(source = "category", target = "category"),
-        @Mapping(source = "inventories", target = "inventories"),  // Corrección: ahora mapea correctamente la lista de inventarios
-        @Mapping(source = "description", target = "description")
-    })
+    @Mapping(source = "category.categoryId", target = "categoryId")
+    @Mapping(source = "inventory.inventoryId", target = "inventoryId")
     ProductDTO toProductDTO(Product product);
 
-    List<ProductDTO> toProductDTO(List<Product> products);
-
-    @InheritInverseConfiguration
+    @Mapping(source = "categoryId", target = "category.categoryId")
+    @Mapping(source = "inventoryId", target = "inventory.inventoryId")
     Product toProduct(ProductDTO productDTO);
 
-    List<Product> toProduct(List<ProductDTO> products);
+    List<ProductDTO> toProductDTOList(List<Product> products);
 }
