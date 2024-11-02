@@ -6,19 +6,9 @@ public class ProductDTO {
     private String description;
     private Double price;
     private Long categoryId;
+    private Long inventoryId;
 
-    // Constructor vacío
-    public ProductDTO() {
-    }
-
-    // Constructor con parámetros
-    public ProductDTO(Long productId, String name, String description, Double price, Long categoryId) {
-        this.productId = productId;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.categoryId = categoryId;
-    }
+    // Getters y Setters
 
     public Long getProductId() {
         return productId;
@@ -60,5 +50,11 @@ public class ProductDTO {
         this.categoryId = categoryId;
     }
 
-   
+    public Long getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(Long inventoryId) {
+        this.inventoryId = inventoryId;
+    }
 }

@@ -1,21 +1,14 @@
 package com.poo.productos.domain.dto;
 
+import java.util.List;
+
 public class CategoryDTO {
     private Long categoryId;
     private String name;
     private String description;
+    private List<ProductDTO> products;
 
-
-    // Constructor vacío
-    public CategoryDTO() {
-    }
-
-    // Constructor con parámetros
-    public CategoryDTO(Long categoryId, String name, String description) {
-        this.categoryId = categoryId;
-        this.name = name;
-        this.description = description;
-    }
+    // Getters y Setters
 
     public Long getCategoryId() {
         return categoryId;
@@ -41,7 +34,11 @@ public class CategoryDTO {
         this.description = description;
     }
 
-   
+    public List<ProductDTO> getProducts() {
+        return products;
+    }
 
-   
+    public void setProducts(List<ProductDTO> products) {
+        this.products = products;
+    }
 }

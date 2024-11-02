@@ -1,13 +1,15 @@
 package com.poo.productos.infrastructure.entities;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "categoryId")
+    @Column(name = "category_id")
     private Long categoryId;
 
     @Column(name = "name", nullable = false, unique = true)
@@ -16,17 +18,10 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-    // Constructor vacío
-    public Category() {
-    }
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Product> products;
 
-    // Constructor con parámetros
-    public Category(Long categoryId, String name, String description) {
-        this.categoryId = categoryId;
-        this.name = name;
-        this.description = description;
-    }
-
+    // Getters y Setters
     public Long getCategoryId() {
         return categoryId;
     }
@@ -51,5 +46,11 @@ public class Category {
         this.description = description;
     }
 
-    
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 }

@@ -1,28 +1,18 @@
 package com.poo.productos.infrastructure.mapper;
 
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import java.util.List;
 import com.poo.productos.domain.dto.CategoryDTO;
 import com.poo.productos.infrastructure.entities.Category;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ProductMapper.class})
 public interface CategoryMapper {
-    @Mappings({
-            @Mapping(source = "categoryId", target = "categoryId"),
-            @Mapping(source = "name", target = "name"),
-            @Mapping(source = "description", target = "description")
 
-    })
-    CategoryDTO tocaCategoryDTO(Category category);
+    @Mapping(source = "products", target = "products")
+    CategoryDTO toCategoryDTO(Category category);
 
-    List<CategoryDTO> tocaCategoryDTO(List<Category> categories);
+    Category toCategory(CategoryDTO categoryDTO);
 
-    @InheritInverseConfiguration
-    Category tCategory(CategoryDTO categoryDTO);
-
-    List<Category> tCategory(List<CategoryDTO> categori);
-
+    List<CategoryDTO> toCategoryDTOList(List<Category> categories);
 }
